@@ -64,6 +64,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mHM-NH-Jue"/>
+                    <connections>
+                        <outlet property="expenseListButton" destination="NEB-t6-5Px" id="N3I-ij-rLT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
