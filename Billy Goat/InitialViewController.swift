@@ -21,6 +21,8 @@ final class InintialViewContoller: UIViewController {
         configureCalendarButton()
         configureExpenseListButton()
         
+        configureCenterView()
+        
         navigationItem.title = "Billy Goat"
     }
     
@@ -32,6 +34,57 @@ final class InintialViewContoller: UIViewController {
     
     private func configureExpenseListButton() {
         expenseListButton.addTarget(self, action: #selector(expenseListPressed), for: .touchUpInside)
+    }
+    
+    private func configureCenterView() {
+        
+        let centerStack = configureCenterStack()
+        let centerLabel = configureCenterLabel()
+        let centerButton = configureCenterButton()
+       
+        centerStack.addArrangedSubview(centerLabel)
+        centerStack.addArrangedSubview(centerButton)
+        
+        view.addSubview(centerStack)
+        
+        configureCenterStackViewConstraints(stackView: centerStack)
+    }
+    
+    private func configureCenterStack() -> UIStackView {
+        let centerStack = UIStackView()
+        centerStack.axis = .vertical
+        centerStack.distribution = .fillEqually
+        centerStack.alignment = .center
+        
+        return centerStack
+    }
+    
+    private func configureCenterLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "In the ..."
+        label.sizeToFit()
+        
+        return label
+    }
+    
+    private func configureCenterButton() -> UIButton {
+        let centerButton = UIButton(type: .system)
+        centerButton.setTitle("Center", for: .normal)
+        centerButton.sizeToFit()
+        centerButton.addTarget(self, action: #selector(centerButtonPressed), for: .touchUpInside)
+        
+        return centerButton
+    }
+    
+    private func configureCenterStackViewConstraints(stackView: UIStackView) {
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        stackView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
     }
     
     
@@ -47,6 +100,10 @@ final class InintialViewContoller: UIViewController {
     
     func expenseListPressed() {
         print("Expense button pressed")
+        
+    }
+    
+    func centerButtonPressed() {
         
     }
     

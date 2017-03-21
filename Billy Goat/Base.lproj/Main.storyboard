@@ -37,29 +37,12 @@
                                 <rect key="frame" x="315" y="694" width="87" height="30"/>
                                 <state key="normal" title="Expense List"/>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-Nd-xk8">
-                                <rect key="frame" x="174" y="337" width="66" height="62.333333333333314"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In The ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZG4-Hi-web">
-                                        <rect key="frame" x="0.0" y="0.0" width="66" height="20.333333333333314"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qF-rf-5Ha">
-                                        <rect key="frame" x="10" y="32.333333333333314" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NEB-t6-5Px" secondAttribute="trailing" constant="12" id="4zJ-nv-bNl"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NEB-t6-5Px" secondAttribute="bottom" constant="12" id="BSl-Vs-WH5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qfT-rZ-f1L" secondAttribute="bottom" constant="12" id="FEy-ty-MIS"/>
-                            <constraint firstItem="fs1-Nd-xk8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Lk9-gD-F3U"/>
-                            <constraint firstItem="fs1-Nd-xk8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hVe-IE-qjh"/>
                             <constraint firstItem="qfT-rZ-f1L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="pa4-FI-Vi6"/>
                         </constraints>
                     </view>
