@@ -76,10 +76,15 @@ final class InintialViewContoller: UIViewController {
         return centerButton
     }
     
+    
+    /// Configure the center stack view of the initialViewController
+    ///
+    /// - Parameter stackView: stack view to add constraints to.
     private func configureCenterStackViewConstraints(stackView: UIStackView) {
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
+        // FIXME: Change constraint after image is inserted
         stackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         stackView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
@@ -90,7 +95,7 @@ final class InintialViewContoller: UIViewController {
     
     // UI Action
     @IBAction func showIncomeList(_ sender: Any) {
-        
+        print("Income button pressed")
     }
 
     // Selector
@@ -104,7 +109,7 @@ final class InintialViewContoller: UIViewController {
     }
     
     func centerButtonPressed() {
-        
+        print("Center button pressed")
     }
     
 }
