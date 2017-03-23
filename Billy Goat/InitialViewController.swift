@@ -13,7 +13,7 @@ final class InintialViewContoller: UIViewController {
     
     // UI Properties
     @IBOutlet weak var expenseListButton: UIButton!
-    
+        
     // ViewController Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()

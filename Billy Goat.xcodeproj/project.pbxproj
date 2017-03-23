@@ -13,6 +13,9 @@
 		7C2304671E7E2A3B006E1F15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C2304661E7E2A3B006E1F15 /* Assets.xcassets */; };
 		7C23046A1E7E2A3B006E1F15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2304681E7E2A3B006E1F15 /* LaunchScreen.storyboard */; };
 		7C2304721E80D7B7006E1F15 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2304711E80D7B7006E1F15 /* InitialViewController.swift */; };
+		7C2304781E835813006E1F15 /* ExpectedExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2304771E835813006E1F15 /* ExpectedExpensesViewController.swift */; };
+		7C23047A1E836BB6006E1F15 /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2304791E836BB6006E1F15 /* ExpenseCell.swift */; };
+		7C23047C1E836E95006E1F15 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23047B1E836E95006E1F15 /* Expense.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		7C2304691E7E2A3B006E1F15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C23046B1E7E2A3B006E1F15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C2304711E80D7B7006E1F15 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		7C2304771E835813006E1F15 /* ExpectedExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpectedExpensesViewController.swift; sourceTree = "<group>"; };
+		7C2304791E836BB6006E1F15 /* ExpenseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
+		7C23047B1E836E95006E1F15 /* Expense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				7C23046B1E7E2A3B006E1F15 /* Info.plist */,
 				7C2304631E7E2A3B006E1F15 /* Billy_Goat.xcdatamodeld */,
 				7C2304711E80D7B7006E1F15 /* InitialViewController.swift */,
+				7C2304771E835813006E1F15 /* ExpectedExpensesViewController.swift */,
+				7C2304791E836BB6006E1F15 /* ExpenseCell.swift */,
+				7C23047B1E836E95006E1F15 /* Expense.swift */,
 			);
 			path = "Billy Goat";
 			sourceTree = "<group>";
@@ -140,9 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C23047C1E836E95006E1F15 /* Expense.swift in Sources */,
 				7C2304721E80D7B7006E1F15 /* InitialViewController.swift in Sources */,
 				7C2304651E7E2A3B006E1F15 /* Billy_Goat.xcdatamodeld in Sources */,
+				7C23047A1E836BB6006E1F15 /* ExpenseCell.swift in Sources */,
 				7C23045D1E7E2A3B006E1F15 /* AppDelegate.swift in Sources */,
+				7C2304781E835813006E1F15 /* ExpectedExpensesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
