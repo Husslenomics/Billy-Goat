@@ -39,16 +39,18 @@ class ExpectedExpensesViewController: UITableViewController {
         if editingStyle == .delete {
             print("delete")
     
+            // You don't need self here.
             self.fakeData.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-    
         }
     }
+
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+        // Sender should just be self
         performSegue(withIdentifier: "showEdit", sender: EditExpenseTableViewController())
     }
     
