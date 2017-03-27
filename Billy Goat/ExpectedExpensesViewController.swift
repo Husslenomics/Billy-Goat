@@ -31,6 +31,28 @@ class ExpectedExpensesViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("delete")
+    
+            self.fakeData.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+    
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        performSegue(withIdentifier: "showEdit", sender: EditExpenseTableViewController())
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // reduce indentation and force unwrapping by using guard.
 //        if segue.identifier == "showEdit" {
@@ -42,6 +64,7 @@ class ExpectedExpensesViewController: UITableViewController {
         
         guard segue.identifier == "showEdit" else { return }
         guard let navigationController = segue.destination as? UINavigationController, let editExpenseTableVC = navigationController.topViewController as? EditExpenseTableViewController else { return }
+        
         
         editExpenseTableVC.editExpenseDelegate = self
     }
