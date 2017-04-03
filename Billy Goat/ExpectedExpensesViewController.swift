@@ -11,7 +11,7 @@ import UIKit
 class ExpectedExpensesViewController: UITableViewController {
     
     fileprivate var fakeData = Expense.fakeData
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,12 +94,33 @@ class ExpectedExpensesViewController: UITableViewController {
         }
         
     }
+    @IBAction func totalButtonPressed(_ sender: Any) {
+        var totalExpense: Double = 0.0
+        for expense in fakeData {
+            totalExpense += expense.money
+        }
+        
+        let totalAlert = UIAlertController(title: "Total Expenses", message: "Expense total \(totalExpense)", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        totalAlert.addAction(okAction)
+        
+        present(totalAlert, animated: true, completion: nil)
+        
+    }
 }
 
 extension ExpectedExpensesViewController: EditExpenseTableViewControllerDelegate {
-    func didPressDone(with expense: Expense) {
+    func didPressDone(with expense: Expense, expenseState: EditExpenseTableViewController.ExpenseState) {
         // 5. depending on the state either append or insert at certain indexPath. 
-        fakeData.append(expense)
+        guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else { return }
+        switch expenseState {
+        case .edit:
+            fakeData.remove(at: indexPathForSelectedRow.row)
+            fakeData.insert(expense, at: indexPathForSelectedRow.row)
+        case .add:
+            fakeData.append(expense)
+        }
         tableView.reloadData()
     }
 }

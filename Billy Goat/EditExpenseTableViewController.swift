@@ -11,16 +11,27 @@ import UIKit
 
 
 protocol EditExpenseTableViewControllerDelegate: class {
-    func didPressDone(with expense: Expense)
+    func didPressDone(with expense: Expense, expenseState: EditExpenseTableViewController.ExpenseState)
 }
 
-class EditExpenseTableViewController: UITableViewController {
+final class EditExpenseTableViewController: UITableViewController {
     
     // 2. add property observer to set the state that was created in step 1
-    var expense: Expense?
+    
+    private var expenseState: ExpenseState = .add
+    var expense: Expense? {
+        didSet {
+            expenseState = expense != nil ? .edit : .add
+        }
+    }
+    
     weak var editExpenseDelegate: EditExpenseTableViewControllerDelegate?
     
     // 1. Create a state tracking with either bool or enum
+    enum ExpenseState {
+        case edit
+        case add
+    }
     
     // UIProperties
     @IBOutlet weak var expenseTextField: UITextField!
@@ -38,7 +49,7 @@ class EditExpenseTableViewController: UITableViewController {
         expenseTextField.text = expense.name
         companyTextField.text = expense.company
         duedateTextField.text = expense.dueDate
-        amountTextField.text = expense.money
+        amountTextField.text = "\(expense.money)"
         
     }
     
@@ -47,18 +58,19 @@ class EditExpenseTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
-        // FIXME: form validation 
-
-        // 3. Check the state and act accordingly to the state.
-        let newExpense = Expense(name: expenseTextField.text ?? "", company: companyTextField.text ?? "", money: amountTextField.text ?? "", dueDate: duedateTextField.text ?? "")
-        
+        // FIXME: form validation
+        // remove !
+        expense = Expense(name: expenseTextField.text ?? "", company: companyTextField.text ?? "", money: Double(amountTextField.text!) ?? 0, dueDate: duedateTextField.text ?? "")
         
         // 4. You could possible have 2 different delegate or you could pass the state into this delegate method (parameter) and act accordingly in the other view controller. 
-        editExpenseDelegate?.didPressDone(with: newExpense)
+        guard let expense = expense else { return }
+
+        editExpenseDelegate?.didPressDone(with: expense, expenseState: expenseState)
         
         dismiss(animated: true, completion: nil)
-        
+
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {

@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -70,11 +71,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Expected Expenses" id="1zy-Nl-fHD">
-                        <barButtonItem key="rightBarButtonItem" title="Add Expense" id="GXt-5x-Ycn">
-                            <connections>
-                                <segue destination="Lvk-iK-9e1" kind="presentation" identifier="showAdd" id="0Ia-9V-SLn"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="GXt-5x-Ycn">
+                                <connections>
+                                    <segue destination="Lvk-iK-9e1" kind="presentation" identifier="showAdd" id="0Ia-9V-SLn"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Total" id="5Mh-Bh-DNL">
+                                <connections>
+                                    <action selector="totalButtonPressed:" destination="cdE-ze-XU2" id="tdN-f9-RSF"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -275,6 +283,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vXj-65-pTu"/>
+        <segue reference="0Ia-9V-SLn"/>
     </inferredMetricsTieBreakers>
 </document>

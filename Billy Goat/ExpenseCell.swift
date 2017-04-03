@@ -19,7 +19,7 @@ class ExpenseCell: UITableViewCell {
     func configure(with expense: Expense) {
         expenseName.text = expense.name
         companyName.text = expense.company
-        amountLabel.text = expense.money
+        amountLabel.text = "\(expense.money)"
         dueDate.text = expense.dueDate
     }
     
