@@ -17,14 +17,9 @@ protocol EditExpenseTableViewControllerDelegate: class {
 final class EditExpenseTableViewController: UITableViewController {
     
     // 2. add property observer to set the state that was created in step 1
-    
     private var expenseState: ExpenseState = .add
-    var expense: Expense? {
-        didSet {
-            expenseState = expense != nil ? .edit : .add
-        }
-    }
-    
+    var expense: Expense?
+
     weak var editExpenseDelegate: EditExpenseTableViewControllerDelegate?
     
     // 1. Create a state tracking with either bool or enum
@@ -41,9 +36,10 @@ final class EditExpenseTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // check if expense exist (use guard let)
+    
+        // check if expen`se exist (use guard let)
         guard let expense = expense else { return }
+        expenseState = .edit
         
         // set each textfield's text property with expense data
         expenseTextField.text = expense.name
@@ -52,6 +48,7 @@ final class EditExpenseTableViewController: UITableViewController {
         amountTextField.text = "\(expense.money)"
         
     }
+
     
     // IBACtion
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {

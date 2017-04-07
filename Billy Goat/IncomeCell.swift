@@ -18,7 +18,7 @@ class IncomeCell : UITableViewCell {
     func configure(with income: Income) {
         incomeName.text = income.name
         incomeSource.text = income.source
-        amountExpected.text = income.money
+        amountExpected.text = "\(income.money)"
         payDay.text = income.payDay
         
     }

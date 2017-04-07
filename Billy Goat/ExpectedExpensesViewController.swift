@@ -113,9 +113,9 @@ class ExpectedExpensesViewController: UITableViewController {
 extension ExpectedExpensesViewController: EditExpenseTableViewControllerDelegate {
     func didPressDone(with expense: Expense, expenseState: EditExpenseTableViewController.ExpenseState) {
         // 5. depending on the state either append or insert at certain indexPath. 
-        guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else { return }
         switch expenseState {
         case .edit:
+            guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else { return }
             fakeData.remove(at: indexPathForSelectedRow.row)
             fakeData.insert(expense, at: indexPathForSelectedRow.row)
         case .add:
