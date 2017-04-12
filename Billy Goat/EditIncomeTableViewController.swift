@@ -9,13 +9,13 @@
 import UIKit
 
 protocol EditIncomeTableViewControllerDelegate: class{
-    func didPressDone(with income: Income, incomeState: EditIncomeTableViewController.IncomeState)
+    //func didPressDone(with income: Income, incomeState: EditIncomeTableViewController.IncomeState)
 }
 
 final class EditIncomeTableViewController: UITableViewController {
     
     private var incomeState: IncomeState = .add
-    var income: Income?
+    //var income: Income?
     
     weak var editIncomeDelegate: EditIncomeTableViewControllerDelegate?
     
@@ -32,14 +32,14 @@ final class EditIncomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        incomeState = income != nil ? .edit: .add
+       // incomeState = income != nil ? .edit: .add
         
-        guard let income = income else { return }
-        
-        incomeNameTextField.text = income.name
-        incomeSourceTextField.text = income.source
-        payDayTextField.text = income.payDay
-        amountTextField.text = "\(income.money)"
+//        guard let income = income else { return }
+//        
+//        incomeNameTextField.text = income.name
+//        incomeSourceTextField.text = income.source
+//        payDayTextField.text = income.payDay
+//        amountTextField.text = "\(income.money)"
         
     }
     
@@ -51,12 +51,12 @@ final class EditIncomeTableViewController: UITableViewController {
     
     @IBAction func didPressDoneButton(_ sender: UIBarButtonItem) {
         
-        income = Income(name: incomeNameTextField.text ?? "", source: incomeSourceTextField.text ?? "", money: Double(payDayTextField.text!) ?? 0, payDay: amountTextField.text ?? "")
-        
-        guard let income = income else { return }
-        
-        editIncomeDelegate?.didPressDone(with: income, incomeState: incomeState)
-        
-        dismiss(animated: true, completion: nil)
+//        income = Income(name: incomeNameTextField.text ?? "", source: incomeSourceTextField.text ?? "", money: Double(payDayTextField.text!) ?? 0, payDay: amountTextField.text ?? "")
+//        
+//        guard let income = income else { return }
+//        
+//        editIncomeDelegate?.didPressDone(with: income, incomeState: incomeState)
+//        
+//        dismiss(animated: true, completion: nil)
     }
 }

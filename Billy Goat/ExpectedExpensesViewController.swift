@@ -10,7 +10,7 @@ import UIKit
 
 class ExpectedExpensesViewController: UITableViewController {
     
-    fileprivate var fakeData = Expense.fakeData
+    //fileprivate var fakeData = Expense.fakeData
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,31 +19,31 @@ class ExpectedExpensesViewController: UITableViewController {
     
     
     // number of rows will eventually be indexPath.rows
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fakeData.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell", for: indexPath) as! ExpenseCell
-        
-        // Configure the cell...
-        cell.configure(with: fakeData[indexPath.row])
-        return cell
-    }
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return fakeData.count
+//    }
+//    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell", for: indexPath) as! ExpenseCell
+//        
+//        // Configure the cell...
+//        cell.configure(with: fakeData[indexPath.row])
+//        return cell
+//    }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            print("delete")
-            
-            // You don't need self here. - why not?
-            fakeData.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            print("delete")
+//            
+//            // You don't need self here. - why not?
+//            fakeData.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+//        }
+//    }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -79,12 +79,12 @@ class ExpectedExpensesViewController: UITableViewController {
             guard let selectedExpenseIndexPath = tableView.indexPathForSelectedRow else { return }
         
             // Get expense data for the indexpath
-            let expense = fakeData[selectedExpenseIndexPath.row]
+//            let expense = fakeData[selectedExpenseIndexPath.row]
             
             // send the data to editExpenseTableVC
-            editExpenseTableVC.expense = expense
-            editExpenseTableVC.editExpenseDelegate = self
-            editExpenseTableVC.title = "Edit Expense"
+//            editExpenseTableVC.expense = expense
+//            editExpenseTableVC.editExpenseDelegate = self
+//            editExpenseTableVC.title = "Edit Expense"
             
         case "showAdd":
             editExpenseTableVC.editExpenseDelegate = self
@@ -95,32 +95,32 @@ class ExpectedExpensesViewController: UITableViewController {
         
     }
     @IBAction func totalButtonPressed(_ sender: Any) {
-        var totalExpense: Double = 0.0
-        for expense in fakeData {
-            totalExpense += expense.money
-        }
-        
-        let totalAlert = UIAlertController(title: "Total Expenses", message: "Expense total \(totalExpense)", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        totalAlert.addAction(okAction)
-        
-        present(totalAlert, animated: true, completion: nil)
-        
+//        var totalExpense: Double = 0.0
+////        for expense in fakeData {
+////            totalExpense += expense.money
+////        }
+//        
+//        let totalAlert = UIAlertController(title: "Total Expenses", message: "Expense total \(totalExpense)", preferredStyle: .alert)
+//        
+//        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        totalAlert.addAction(okAction)
+//        
+//        present(totalAlert, animated: true, completion: nil)
+//        
     }
 }
 
 extension ExpectedExpensesViewController: EditExpenseTableViewControllerDelegate {
-    func didPressDone(with expense: Expense, expenseState: EditExpenseTableViewController.ExpenseState) {
-        // 5. depending on the state either append or insert at certain indexPath. 
-        switch expenseState {
-        case .edit:
-            guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else { return }
-            fakeData.remove(at: indexPathForSelectedRow.row)
-            fakeData.insert(expense, at: indexPathForSelectedRow.row)
-        case .add:
-            fakeData.append(expense)
-        }
-        tableView.reloadData()
-    }
+//    func didPressDone(with expense: Expense, expenseState: EditExpenseTableViewController.ExpenseState) {
+//        // 5. depending on the state either append or insert at certain indexPath. 
+//        switch expenseState {
+//        case .edit:
+//            guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else { return }
+//            fakeData.remove(at: indexPathForSelectedRow.row)
+//            fakeData.insert(expense, at: indexPathForSelectedRow.row)
+//        case .add:
+//            fakeData.append(expense)
+//        }
+//        tableView.reloadData()
+//    }
 }

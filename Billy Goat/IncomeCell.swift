@@ -15,13 +15,13 @@ class IncomeCell : UITableViewCell {
     @IBOutlet weak var amountExpected: UILabel!
     @IBOutlet weak var payDay: UILabel!
     
-    func configure(with income: Income) {
-        incomeName.text = income.name
-        incomeSource.text = income.source
-        amountExpected.text = "\(income.money)"
-        payDay.text = income.payDay
-        
-    }
+//    func configure(with income: Income) {
+//        incomeName.text = income.name
+//        incomeSource.text = income.source
+//        amountExpected.text = "\(income.money)"
+//        payDay.text = income.payDay
+//        
+//    }
     
 }
 

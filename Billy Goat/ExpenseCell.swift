@@ -16,11 +16,11 @@ class ExpenseCell: UITableViewCell {
     @IBOutlet weak var dueDate: UILabel!
 
     
-    func configure(with expense: Expense) {
-        expenseName.text = expense.name
-        companyName.text = expense.company
-        amountLabel.text = "\(expense.money)"
-        dueDate.text = expense.dueDate
-    }
+//    func configure(with expense: Expense) {
+//        expenseName.text = expense.name
+//        companyName.text = expense.company
+//        amountLabel.text = "\(expense.money)"
+//        dueDate.text = expense.dueDate
+//    }
     
 }

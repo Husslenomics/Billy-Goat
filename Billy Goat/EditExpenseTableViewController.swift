@@ -11,14 +11,14 @@ import UIKit
 
 
 protocol EditExpenseTableViewControllerDelegate: class {
-    func didPressDone(with expense: Expense, expenseState: EditExpenseTableViewController.ExpenseState)
+    //func didPressDone(with expense: Expense, expenseState: EditExpenseTableViewController.ExpenseState)
 }
 
 final class EditExpenseTableViewController: UITableViewController {
     
     // 2. add property observer to set the state that was created in step 1
     private var expenseState: ExpenseState = .add
-    var expense: Expense?
+    //var expense: Expense?
 
     weak var editExpenseDelegate: EditExpenseTableViewControllerDelegate?
     
@@ -38,14 +38,14 @@ final class EditExpenseTableViewController: UITableViewController {
         super.viewDidLoad()
     
         // check if expen`se exist (use guard let)
-        guard let expense = expense else { return }
-        expenseState = .edit
-        
-        // set each textfield's text property with expense data
-        expenseTextField.text = expense.name
-        companyTextField.text = expense.company
-        duedateTextField.text = expense.dueDate
-        amountTextField.text = "\(expense.money)"
+//        guard let expense = expense else { return }
+//        expenseState = .edit
+//        
+//        // set each textfield's text property with expense data
+//        expenseTextField.text = expense.name
+//        companyTextField.text = expense.company
+//        duedateTextField.text = expense.dueDate
+//        amountTextField.text = "\(expense.money)"
         
     }
 
@@ -59,14 +59,14 @@ final class EditExpenseTableViewController: UITableViewController {
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         // FIXME: form validation
         // remove !
-        expense = Expense(name: expenseTextField.text ?? "", company: companyTextField.text ?? "", money: Double(amountTextField.text!) ?? 0, dueDate: duedateTextField.text ?? "")
-        
-        // 4. You could possible have 2 different delegate or you could pass the state into this delegate method (parameter) and act accordingly in the other view controller. 
-        guard let expense = expense else { return }
-
-        editExpenseDelegate?.didPressDone(with: expense, expenseState: expenseState)
-        
-        dismiss(animated: true, completion: nil)
+//        expense = Expense(name: expenseTextField.text ?? "", company: companyTextField.text ?? "", money: Double(amountTextField.text!) ?? 0, dueDate: duedateTextField.text ?? "")
+//        
+//        // 4. You could possible have 2 different delegate or you could pass the state into this delegate method (parameter) and act accordingly in the other view controller. 
+//        guard let expense = expense else { return }
+//
+//        editExpenseDelegate?.didPressDone(with: expense, expenseState: expenseState)
+//        
+//        dismiss(animated: true, completion: nil)
 
     }
     

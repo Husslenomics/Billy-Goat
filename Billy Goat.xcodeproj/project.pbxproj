@@ -15,14 +15,16 @@
 		7C2304721E80D7B7006E1F15 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2304711E80D7B7006E1F15 /* InitialViewController.swift */; };
 		7C2304781E835813006E1F15 /* ExpectedExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2304771E835813006E1F15 /* ExpectedExpensesViewController.swift */; };
 		7C23047A1E836BB6006E1F15 /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2304791E836BB6006E1F15 /* ExpenseCell.swift */; };
-		7C23047C1E836E95006E1F15 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23047B1E836E95006E1F15 /* Expense.swift */; };
 		7C2304821E837D5B006E1F15 /* Expense.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2304801E837D5B006E1F15 /* Expense.storyboard */; };
 		7C2304841E837EDB006E1F15 /* EditExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2304831E837EDB006E1F15 /* EditExpenseTableViewController.swift */; };
 		7C2B69091E9800ED0017D6E3 /* Income.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2B69071E9800ED0017D6E3 /* Income.storyboard */; };
 		7C4BE06B1E8A191D009A387F /* IncomeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4BE06A1E8A191D009A387F /* IncomeListTableViewController.swift */; };
 		7C4BE06D1E8A1DE4009A387F /* IncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4BE06C1E8A1DE4009A387F /* IncomeCell.swift */; };
-		7C4BE06F1E8A1FE5009A387F /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4BE06E1E8A1FE5009A387F /* Income.swift */; };
 		7CA253681E960D52000CB31C /* EditIncomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA253671E960D52000CB31C /* EditIncomeTableViewController.swift */; };
+		7CD46B7C1E9DE54E00B7788A /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD46B781E9DE54E00B7788A /* Expense+CoreDataClass.swift */; };
+		7CD46B7D1E9DE54E00B7788A /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD46B791E9DE54E00B7788A /* Expense+CoreDataProperties.swift */; };
+		7CD46B7E1E9DE54E00B7788A /* Income+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD46B7A1E9DE54E00B7788A /* Income+CoreDataClass.swift */; };
+		7CD46B7F1E9DE54E00B7788A /* Income+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD46B7B1E9DE54E00B7788A /* Income+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,14 +38,16 @@
 		7C2304711E80D7B7006E1F15 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		7C2304771E835813006E1F15 /* ExpectedExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpectedExpensesViewController.swift; sourceTree = "<group>"; };
 		7C2304791E836BB6006E1F15 /* ExpenseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
-		7C23047B1E836E95006E1F15 /* Expense.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		7C2304811E837D5B006E1F15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Expense.storyboard; sourceTree = "<group>"; };
 		7C2304831E837EDB006E1F15 /* EditExpenseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseTableViewController.swift; sourceTree = "<group>"; };
 		7C2B69081E9800ED0017D6E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Income.storyboard; sourceTree = "<group>"; };
 		7C4BE06A1E8A191D009A387F /* IncomeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeListTableViewController.swift; sourceTree = "<group>"; };
 		7C4BE06C1E8A1DE4009A387F /* IncomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeCell.swift; sourceTree = "<group>"; };
-		7C4BE06E1E8A1FE5009A387F /* Income.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
 		7CA253671E960D52000CB31C /* EditIncomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIncomeTableViewController.swift; sourceTree = "<group>"; };
+		7CD46B781E9DE54E00B7788A /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7CD46B791E9DE54E00B7788A /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7CD46B7A1E9DE54E00B7788A /* Income+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Income+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7CD46B7B1E9DE54E00B7788A /* Income+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Income+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,33 +81,32 @@
 			isa = PBXGroup;
 			children = (
 				7C2304711E80D7B7006E1F15 /* InitialViewController.swift */,
-				7C23045C1E7E2A3B006E1F15 /* AppDelegate.swift */,
 				7C23047F1E837D1D006E1F15 /* Storyboard */,
-				7C23047D1E837CE8006E1F15 /* Expense */,
-				7C4BE0691E8A18F1009A387F /* Income */,
+				7C23047D1E837CE8006E1F15 /* Expense Screen */,
+				7C4BE0691E8A18F1009A387F /* Income Screen */,
+				7CD7C41B1E9DDF8A00C1AF04 /* Core Data */,
 				7C23047E1E837CF5006E1F15 /* Support */,
 			);
 			path = "Billy Goat";
 			sourceTree = "<group>";
 		};
-		7C23047D1E837CE8006E1F15 /* Expense */ = {
+		7C23047D1E837CE8006E1F15 /* Expense Screen */ = {
 			isa = PBXGroup;
 			children = (
 				7C2304771E835813006E1F15 /* ExpectedExpensesViewController.swift */,
 				7C2304791E836BB6006E1F15 /* ExpenseCell.swift */,
-				7C23047B1E836E95006E1F15 /* Expense.swift */,
 				7C2304831E837EDB006E1F15 /* EditExpenseTableViewController.swift */,
 			);
-			name = Expense;
+			name = "Expense Screen";
 			sourceTree = "<group>";
 		};
 		7C23047E1E837CF5006E1F15 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				7C23045C1E7E2A3B006E1F15 /* AppDelegate.swift */,
 				7C2304661E7E2A3B006E1F15 /* Assets.xcassets */,
 				7C2304681E7E2A3B006E1F15 /* LaunchScreen.storyboard */,
 				7C23046B1E7E2A3B006E1F15 /* Info.plist */,
-				7C2304631E7E2A3B006E1F15 /* Billy_Goat.xcdatamodeld */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -118,15 +121,26 @@
 			name = Storyboard;
 			sourceTree = "<group>";
 		};
-		7C4BE0691E8A18F1009A387F /* Income */ = {
+		7C4BE0691E8A18F1009A387F /* Income Screen */ = {
 			isa = PBXGroup;
 			children = (
 				7C4BE06A1E8A191D009A387F /* IncomeListTableViewController.swift */,
 				7C4BE06C1E8A1DE4009A387F /* IncomeCell.swift */,
-				7C4BE06E1E8A1FE5009A387F /* Income.swift */,
 				7CA253671E960D52000CB31C /* EditIncomeTableViewController.swift */,
 			);
-			name = Income;
+			name = "Income Screen";
+			sourceTree = "<group>";
+		};
+		7CD7C41B1E9DDF8A00C1AF04 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				7CD46B781E9DE54E00B7788A /* Expense+CoreDataClass.swift */,
+				7CD46B791E9DE54E00B7788A /* Expense+CoreDataProperties.swift */,
+				7CD46B7A1E9DE54E00B7788A /* Income+CoreDataClass.swift */,
+				7CD46B7B1E9DE54E00B7788A /* Income+CoreDataProperties.swift */,
+				7C2304631E7E2A3B006E1F15 /* Billy_Goat.xcdatamodeld */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,16 +218,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C23047C1E836E95006E1F15 /* Expense.swift in Sources */,
 				7C2304721E80D7B7006E1F15 /* InitialViewController.swift in Sources */,
 				7C2304841E837EDB006E1F15 /* EditExpenseTableViewController.swift in Sources */,
+				7CD46B7F1E9DE54E00B7788A /* Income+CoreDataProperties.swift in Sources */,
+				7CD46B7C1E9DE54E00B7788A /* Expense+CoreDataClass.swift in Sources */,
 				7C2304651E7E2A3B006E1F15 /* Billy_Goat.xcdatamodeld in Sources */,
+				7CD46B7E1E9DE54E00B7788A /* Income+CoreDataClass.swift in Sources */,
 				7C4BE06D1E8A1DE4009A387F /* IncomeCell.swift in Sources */,
 				7C4BE06B1E8A191D009A387F /* IncomeListTableViewController.swift in Sources */,
 				7C23047A1E836BB6006E1F15 /* ExpenseCell.swift in Sources */,
+				7CD46B7D1E9DE54E00B7788A /* Expense+CoreDataProperties.swift in Sources */,
 				7CA253681E960D52000CB31C /* EditIncomeTableViewController.swift in Sources */,
 				7C23045D1E7E2A3B006E1F15 /* AppDelegate.swift in Sources */,
-				7C4BE06F1E8A1FE5009A387F /* Income.swift in Sources */,
 				7C2304781E835813006E1F15 /* ExpectedExpensesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
