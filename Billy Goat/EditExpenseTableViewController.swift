@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 
 protocol EditExpenseTableViewControllerDelegate: class {
@@ -15,6 +16,11 @@ protocol EditExpenseTableViewControllerDelegate: class {
 }
 
 final class EditExpenseTableViewController: UITableViewController {
+    
+//    var context: NSManagedObjectContext? {
+//        return (UIApplication.shared.delegate as? AppDelegate)?
+//            .persistentContainer.viewContext
+//    }
     
     // 2. add property observer to set the state that was created in step 1
     private var expenseState: ExpenseState = .add
@@ -66,7 +72,12 @@ final class EditExpenseTableViewController: UITableViewController {
 //
 //        editExpenseDelegate?.didPressDone(with: expense, expenseState: expenseState)
 //        
-//        dismiss(animated: true, completion: nil)
+        //guard let context = context else { fatalError("Shit needs to be here.") }
+        
+        Expense.expense(with: Double(amountTextField.text!) ?? 0, companyName: companyTextField.text ?? "", dueDate: Date(), name: expenseTextField.text ?? "", isReoccuring: false, in: AppDelegate.persistentContainer.viewContext)
+        try! AppDelegate.persistentContainer.viewContext.save()
+        
+        dismiss(animated: true, completion: nil)
 
     }
     

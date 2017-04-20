@@ -11,5 +11,22 @@ import CoreData
 
 @objc(Income)
 public class Income: NSManagedObject {
+    
+    
+//    creating a class function to be called wherever specifically at done button
+    class func income(with amount: Double?, sourceName: String?, name: String?, date: Date?, isReoccuring: Bool?, in context: NSManagedObjectContext) -> Income? {
+        
+        guard let amount = amount, let isReoccuring = isReoccuring else { return nil }
+        
+        let income = Income(context: context)
+        
+        income.amount = amount
+        income.sourceName = sourceName
+        income.name = name
+        income.date = date as! NSDate
+        income.isReoccuring = isReoccuring
+        
+        return income
+    }
 
 }

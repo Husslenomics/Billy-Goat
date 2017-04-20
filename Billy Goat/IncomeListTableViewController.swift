@@ -8,10 +8,30 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class IncomeListTableViewController : UITableViewController {
     
+//    var context: NSManagedObjectContext? {
+//        return (UIApplication.shared.delegate as? AppDelegate)?
+//            .persistentContainer.viewContext
+//    }
+//    
     //fileprivate var tempData = Income.tempData
+    
+//    instantiating a fetched Results controller to be used on Income class
+    
+    var fetchedResultsController: NSFetchedResultsController<Income> {
+        let fetchRequest: NSFetchRequest<Income> = Income.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(Income.date), ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        let fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchResultsController.delegate = self
+        try! fetchResultsController.performFetch()
+        return fetchResultsController
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +60,16 @@ class IncomeListTableViewController : UITableViewController {
     }
     
     
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        //return tempData.count
-//    }
-//    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchedResultsController.fetchedObjects?.count ?? 0
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IncomeCell", for: indexPath) as! IncomeCell
         
         ///cell.configure(with: tempData[indexPath.row])
+        let income = fetchedResultsController.object(at: indexPath)
+        cell.configure(with: income)
         return cell
     }
     
@@ -101,4 +123,12 @@ extension IncomeListTableViewController: EditIncomeTableViewControllerDelegate {
 //        }
 //        tableView.reloadData()
 //    }
+}
+
+// allowing callback to notify the Incomelist that changes have been made
+
+extension IncomeListTableViewController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        tableView.reloadData()
+    }
 }

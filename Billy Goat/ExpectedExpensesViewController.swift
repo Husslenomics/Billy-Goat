@@ -7,29 +7,49 @@
 //
 
 import UIKit
+import CoreData
 
 class ExpectedExpensesViewController: UITableViewController {
+    
+    
+    // TODO: take this out and use Core Data Stack custom class.
+//    var context: NSManagedObjectContext? {
+//        return (UIApplication.shared.delegate as? AppDelegate)?
+//            .persistentContainer.viewContext
+//    }
+    
+    var fetchedResultsController: NSFetchedResultsController<Expense> {
+        //guard let context = context else { fatalError("Needs context here") }
+        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(Expense.dueDate), ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        let fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchResultsController.delegate = self
+        try! fetchResultsController.performFetch()
+        return fetchResultsController
+    }
     
     //fileprivate var fakeData = Expense.fakeData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     
     // number of rows will eventually be indexPath.rows
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return fakeData.count
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell", for: indexPath) as! ExpenseCell
-//        
-//        // Configure the cell...
-//        cell.configure(with: fakeData[indexPath.row])
-//        return cell
-//    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchedResultsController.fetchedObjects?.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell", for: indexPath) as! ExpenseCell
+        
+        // Configure the cell...
+        let expense = fetchedResultsController.object(at: indexPath)
+        cell.configure(with: expense)
+        return cell
+    }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -123,4 +143,10 @@ extension ExpectedExpensesViewController: EditExpenseTableViewControllerDelegate
 //        }
 //        tableView.reloadData()
 //    }
+}
+
+extension ExpectedExpensesViewController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        tableView.reloadData()
+    }
 }

@@ -49,6 +49,7 @@ final class EditIncomeTableViewController: UITableViewController {
         
     }
     
+//    filled in the income object with the text field input and saved to context when done is pressed
     @IBAction func didPressDoneButton(_ sender: UIBarButtonItem) {
         
 //        income = Income(name: incomeNameTextField.text ?? "", source: incomeSourceTextField.text ?? "", money: Double(payDayTextField.text!) ?? 0, payDay: amountTextField.text ?? "")
@@ -58,5 +59,10 @@ final class EditIncomeTableViewController: UITableViewController {
 //        editIncomeDelegate?.didPressDone(with: income, incomeState: incomeState)
 //        
 //        dismiss(animated: true, completion: nil)
+        
+        Income.income(with: Double(amountTextField.text!) ?? 0, sourceName: incomeSourceTextField.text ?? "", name: incomeNameTextField.text ?? "", date: Date(), isReoccuring: false, in: AppDelegate.persistentContainer.viewContext)
+        try! AppDelegate.persistentContainer.viewContext.save()
+        
+         dismiss(animated: true, completion: nil)
     }
 }

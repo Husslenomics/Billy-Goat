@@ -12,4 +12,30 @@ import CoreData
 @objc(Expense)
 public class Expense: NSManagedObject {
 
+    
+    /// Instantiate Expense object
+    ///
+    /// - Parameters:
+    ///   - amount: amount of the expense
+    ///   - companyName: company name of the expense
+    ///   - dueDate: dude date of the expense
+    ///   - name: name of the expense
+    ///   - isReoccuring: if the expense is re occuring
+    ///   - context: context to be used to insert the expense
+    /// - Returns: Fully configured Expense or nil
+    class func expense(with amount: Double?, companyName: String?, dueDate: Date?, name: String?, isReoccuring: Bool?, in context: NSManagedObjectContext) -> Expense? {
+    
+        guard let amount = amount, let isReoccuring = isReoccuring else { return nil }
+        
+        let expense = Expense(context: context)
+        
+        // Hydrate the expense object
+        expense.amount = amount
+        expense.companyName = companyName
+        expense.dueDate = dueDate as! NSDate
+        expense.name = name
+        expense.isReoccuring = isReoccuring
+        
+        return expense
+    }
 }
