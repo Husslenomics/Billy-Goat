@@ -29,4 +29,12 @@ public class Income: NSManagedObject {
         return income
     }
 
+    
+    class func incomeFetchRequest() -> NSFetchRequest<Income> {
+        let fetchRequest: NSFetchRequest<Income> = Income.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(Income.date), ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        return fetchRequest
+    }
 }

@@ -11,22 +11,22 @@ import CoreData
 
 class ExpectedExpensesViewController: UITableViewController {
     
-    
-    // TODO: take this out and use Core Data Stack custom class.
-//    var context: NSManagedObjectContext? {
-//        return (UIApplication.shared.delegate as? AppDelegate)?
-//            .persistentContainer.viewContext
-//    }
-    
     var fetchedResultsController: NSFetchedResultsController<Expense> {
         //guard let context = context else { fatalError("Needs context here") }
-        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: #keyPath(Expense.dueDate), ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        let fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+       
+        let fetchResultsController = NSFetchedResultsController(fetchRequest: Expense.expenseFetchRequest(), managedObjectContext: AppDelegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultsController.delegate = self
-        try! fetchResultsController.performFetch()
+        do {
+            try fetchResultsController.performFetch()
+        } catch {
+            print("Failed to fetch")
+        }
+        
         return fetchResultsController
+    }
+    
+    private var viewContext: NSManagedObjectContext {
+        return AppDelegate.persistentContainer.viewContext
     }
     
     //fileprivate var fakeData = Expense.fakeData
@@ -55,15 +55,16 @@ class ExpectedExpensesViewController: UITableViewController {
         return true
     }
     
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            print("delete")
-//            
-//            // You don't need self here. - why not?
-//            fakeData.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//        }
-//    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("delete")
+            
+            let expense = fetchedResultsController.object(at: indexPath)
+            // You don't need self here. - why not?
+            Expense.delete(expense: expense, in: viewContext)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -115,18 +116,22 @@ class ExpectedExpensesViewController: UITableViewController {
         
     }
     @IBAction func totalButtonPressed(_ sender: Any) {
-//        var totalExpense: Double = 0.0
-////        for expense in fakeData {
-////            totalExpense += expense.money
-////        }
-//        
-//        let totalAlert = UIAlertController(title: "Total Expenses", message: "Expense total \(totalExpense)", preferredStyle: .alert)
-//        
-//        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//        totalAlert.addAction(okAction)
-//        
-//        present(totalAlert, animated: true, completion: nil)
-//        
+        var totalExpense: Double = 0.0
+        guard let fetchedObjects = fetchedResultsController.fetchedObjects else { return }
+ 
+//       var totalExpense = fetchedObjects.reduce(0, {$0 + $1.amount})
+        
+        for expense in fetchedObjects {
+            totalExpense += expense.amount
+        }
+        
+        let totalAlert = UIAlertController(title: "Total Expenses", message: "Expense total \(totalExpense)", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        totalAlert.addAction(okAction)
+        
+        present(totalAlert, animated: true, completion: nil)
+        
     }
 }
 

@@ -15,7 +15,7 @@ protocol EditIncomeTableViewControllerDelegate: class{
 final class EditIncomeTableViewController: UITableViewController {
     
     private var incomeState: IncomeState = .add
-    //var income: Income?
+//    var income: Income?
     
     weak var editIncomeDelegate: EditIncomeTableViewControllerDelegate?
     
@@ -32,14 +32,14 @@ final class EditIncomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // incomeState = income != nil ? .edit: .add
-        
+//        incomeState = income != nil ? .edit: .add
+//        
 //        guard let income = income else { return }
 //        
 //        incomeNameTextField.text = income.name
-//        incomeSourceTextField.text = income.source
-//        payDayTextField.text = income.payDay
-//        amountTextField.text = "\(income.money)"
+//        incomeSourceTextField.text = income.sourceName
+//        payDayTextField.text = "\(income.date)"
+//        amountTextField.text = "\(income.amount)"
         
     }
     

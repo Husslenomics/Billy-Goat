@@ -38,4 +38,22 @@ public class Expense: NSManagedObject {
         
         return expense
     }
+    
+    class func expenseFetchRequest() -> NSFetchRequest<Expense> {
+        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(Expense.dueDate), ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        return fetchRequest
+    }
+    
+    class func delete(expense: Expense, in context: NSManagedObjectContext) {
+        context.delete(expense)
+        
+        do {
+            try context.save()
+        } catch {
+            print("Wasn't able to delete \(expense.name)")
+        }
+    }
 }
