@@ -15,7 +15,7 @@ protocol EditIncomeTableViewControllerDelegate: class{
 final class EditIncomeTableViewController: UITableViewController {
     
     private var incomeState: IncomeState = .add
-//    var income: Income?
+    var income: Income?
     
     weak var editIncomeDelegate: EditIncomeTableViewControllerDelegate?
     
@@ -32,14 +32,20 @@ final class EditIncomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        incomeState = income != nil ? .edit: .add
-//        
-//        guard let income = income else { return }
-//        
-//        incomeNameTextField.text = income.name
-//        incomeSourceTextField.text = income.sourceName
-//        payDayTextField.text = "\(income.date)"
-//        amountTextField.text = "\(income.amount)"
+//        if income != nil {
+//            incomeState = .edit
+//        } else {
+//            incomeState = .add
+//        }
+        
+        incomeState = income != nil ? .edit: .add
+        
+        guard let income = income else { return }
+        
+        incomeNameTextField.text = income.name
+        incomeSourceTextField.text = income.sourceName
+        payDayTextField.text = "\(income.date)"
+        amountTextField.text = "\(income.amount)"
         
     }
     
@@ -60,8 +66,18 @@ final class EditIncomeTableViewController: UITableViewController {
 //        
 //        dismiss(animated: true, completion: nil)
         
-        Income.income(with: Double(amountTextField.text!) ?? 0, sourceName: incomeSourceTextField.text ?? "", name: incomeNameTextField.text ?? "", date: Date(), isReoccuring: false, in: AppDelegate.persistentContainer.viewContext)
-        try! AppDelegate.persistentContainer.viewContext.save()
+        switch incomeState {
+        case .add:
+            // FIXME: remove ! and clean up viewContext
+            Income.income(with: Double(amountTextField.text!) ?? 0, sourceName: incomeSourceTextField.text ?? "", name: incomeNameTextField.text ?? "", date: Date(), isReoccuring: false, in: AppDelegate.persistentContainer.viewContext)
+            try! AppDelegate.persistentContainer.viewContext.save()
+        case .edit:
+            income?.name = incomeNameTextField.text
+            income?.sourceName = incomeSourceTextField.text
+            income?.date = NSDate()
+            income?.amount = Double(amountTextField.text ?? "0") ?? 0
+            try! AppDelegate.persistentContainer.viewContext.save()
+        }
         
          dismiss(animated: true, completion: nil)
     }

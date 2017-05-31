@@ -24,7 +24,7 @@ final class EditExpenseTableViewController: UITableViewController {
     
     // 2. add property observer to set the state that was created in step 1
     private var expenseState: ExpenseState = .add
-    //var expense: Expense?
+    var expense: Expense?
 
     weak var editExpenseDelegate: EditExpenseTableViewControllerDelegate?
     
@@ -44,14 +44,14 @@ final class EditExpenseTableViewController: UITableViewController {
         super.viewDidLoad()
     
         // check if expen`se exist (use guard let)
-//        guard let expense = expense else { return }
-//        expenseState = .edit
-//        
+        guard let expense = expense else { return }
+        expenseState = .edit
+//
 //        // set each textfield's text property with expense data
-//        expenseTextField.text = expense.name
-//        companyTextField.text = expense.company
-//        duedateTextField.text = expense.dueDate
-//        amountTextField.text = "\(expense.money)"
+        expenseTextField.text = expense.name
+        companyTextField.text = expense.companyName
+        duedateTextField.text = "\(expense.dueDate)"
+        amountTextField.text = "\(expense.amount)"
         
     }
 

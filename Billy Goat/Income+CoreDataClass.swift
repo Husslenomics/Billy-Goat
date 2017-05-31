@@ -37,4 +37,14 @@ public class Income: NSManagedObject {
         
         return fetchRequest
     }
+    
+    class func delete(income: Income, in context: NSManagedObjectContext) {
+        context.delete(income)
+        
+        do {
+            try context.save()
+        } catch {
+            print("was unable to save \(income.name) ")
+        }
+    }
 }

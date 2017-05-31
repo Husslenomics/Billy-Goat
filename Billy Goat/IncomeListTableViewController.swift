@@ -30,7 +30,10 @@ class IncomeListTableViewController : UITableViewController {
             print("failed to fetch")
         }
         return fetchResultsController
-        
+    }
+    
+    private var viewContext: NSManagedObjectContext {
+        return AppDelegate.persistentContainer.viewContext
     }
     
     override func viewDidLoad() {
@@ -44,19 +47,22 @@ class IncomeListTableViewController : UITableViewController {
     }
     
     @IBAction func didPressTotal(_ sender: Any) {
-        //        var totalIncome: Double = 0.0
-        //        for income in tempData  {
-        //            totalIncome += income.money
-        //        }
-        //
-        //        let totalAlert = UIAlertController(title: "Total Income", message: "\(totalIncome)", preferredStyle: .alert)
-        //
-        //        let okAction = UIAlertAction(title: "Cool", style: .default, handler: nil)
-        //        totalAlert.addAction(okAction)
-        //
-        //        present(totalAlert, animated: true, completion: nil)
-        //
-        //
+        var totalIncome: Double = 0.0
+        guard let fetchedObjects = fetchedResultsController.fetchedObjects else { return }
+        
+        
+        for income in fetchedObjects  {
+            totalIncome += income.amount
+        }
+        
+        let totalAlert = UIAlertController(title: "Total Income", message: "\(totalIncome)", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Cool", style: .default, handler: nil)
+        totalAlert.addAction(okAction)
+        
+        present(totalAlert, animated: true, completion: nil)
+        
+        
     }
     
     
@@ -78,12 +84,14 @@ class IncomeListTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        //        if editingStyle == .delete {
-        //            print("delete")
-        //
-        //            tempData.remove(at: indexPath.row)
-        //            tableView.deleteRows(at: [indexPath], with: .automatic)
-        //        }
+        if editingStyle == .delete {
+            print("delete")
+            
+            let income = fetchedResultsController.object(at: indexPath)
+            Income.delete(income: income, in: viewContext)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+    
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -93,37 +101,22 @@ class IncomeListTableViewController : UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigationController = segue.destination as? UINavigationController, let editIncomeVC = navigationController.topViewController as? EditIncomeTableViewController, let identifier = segue.identifier else { return }
         
-        //        switch identifier {
-        //        case "showEdit":
-        //            guard let selectedIncomeIndexPath = tableView.indexPathForSelectedRow else { return }
-        //
-        //            let income = tempData[selectedIncomeIndexPath.row]
-        //            editIncomeVC.income = income
-        //            editIncomeVC.editIncomeDelegate = self
-        //            editIncomeVC.title = "Edit Income"
-        //
-        //        case "showAdd":
-        //            editIncomeVC.title = "Add Income"
-        //            editIncomeVC.editIncomeDelegate = self
-        //
-        //        default: break
-        //        }
+        switch identifier {
+        case "showEdit":
+            guard let selectedIncomeIndexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let income = fetchedResultsController.object(at: selectedIncomeIndexPath)
+            editIncomeVC.income = income
+            editIncomeVC.title = "Edit Income"
+            
+        case "showAdd":
+            editIncomeVC.title = "Add Income"
+    
+        default: break
+        }
     }
 }
 
-extension IncomeListTableViewController: EditIncomeTableViewControllerDelegate {
-    //    func didPressDone(with income: Income, incomeState: EditIncomeTableViewController.IncomeState) {
-    //        switch incomeState {
-    //        case .edit:
-    //            guard let selectedIncomeCell = tableView.indexPathForSelectedRow else { return }
-    //            tempData.remove(at: selectedIncomeCell.row)
-    //            tempData.insert(income, at: selectedIncomeCell.row)
-    //        case .add:
-    //            tempData.append(income)
-    //        }
-    //        tableView.reloadData()
-    //    }
-}
 
 // allowing callback to notify the Incomelist that changes have been made
 

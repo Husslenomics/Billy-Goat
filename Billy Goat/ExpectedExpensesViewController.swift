@@ -13,7 +13,7 @@ class ExpectedExpensesViewController: UITableViewController {
     
     var fetchedResultsController: NSFetchedResultsController<Expense> {
         //guard let context = context else { fatalError("Needs context here") }
-       
+        
         let fetchResultsController = NSFetchedResultsController(fetchRequest: Expense.expenseFetchRequest(), managedObjectContext: AppDelegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultsController.delegate = self
         do {
@@ -30,10 +30,10 @@ class ExpectedExpensesViewController: UITableViewController {
     }
     
     //fileprivate var fakeData = Expense.fakeData
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     
@@ -69,8 +69,6 @@ class ExpectedExpensesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        
         // Sender should just be self - fixed
         performSegue(withIdentifier: "showEdit", sender: self)
     }
@@ -98,14 +96,15 @@ class ExpectedExpensesViewController: UITableViewController {
         case "showEdit":
             // Find out index Path
             guard let selectedExpenseIndexPath = tableView.indexPathForSelectedRow else { return }
-        
-            // Get expense data for the indexpath
-//            let expense = fakeData[selectedExpenseIndexPath.row]
             
-            // send the data to editExpenseTableVC
-//            editExpenseTableVC.expense = expense
-//            editExpenseTableVC.editExpenseDelegate = self
-//            editExpenseTableVC.title = "Edit Expense"
+            //Get expense data for the indexpath
+            let expense = fetchedResultsController.object(at: selectedExpenseIndexPath)
+            
+            
+            //  send the data to editExpenseTableVC
+            editExpenseTableVC.expense = expense
+            editExpenseTableVC.editExpenseDelegate = self
+            editExpenseTableVC.title = "Edit Expense"
             
         case "showAdd":
             editExpenseTableVC.editExpenseDelegate = self
@@ -115,11 +114,12 @@ class ExpectedExpensesViewController: UITableViewController {
         }
         
     }
+    
     @IBAction func totalButtonPressed(_ sender: Any) {
         var totalExpense: Double = 0.0
         guard let fetchedObjects = fetchedResultsController.fetchedObjects else { return }
- 
-//       var totalExpense = fetchedObjects.reduce(0, {$0 + $1.amount})
+        
+        //       var totalExpense = fetchedObjects.reduce(0, {$0 + $1.amount})
         
         for expense in fetchedObjects {
             totalExpense += expense.amount
@@ -136,18 +136,18 @@ class ExpectedExpensesViewController: UITableViewController {
 }
 
 extension ExpectedExpensesViewController: EditExpenseTableViewControllerDelegate {
-//    func didPressDone(with expense: Expense, expenseState: EditExpenseTableViewController.ExpenseState) {
-//        // 5. depending on the state either append or insert at certain indexPath. 
-//        switch expenseState {
-//        case .edit:
-//            guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else { return }
-//            fakeData.remove(at: indexPathForSelectedRow.row)
-//            fakeData.insert(expense, at: indexPathForSelectedRow.row)
-//        case .add:
-//            fakeData.append(expense)
-//        }
-//        tableView.reloadData()
-//    }
+    //    func didPressDone(with expense: Expense, expenseState: EditExpenseTableViewController.ExpenseState) {
+    //        // 5. depending on the state either append or insert at certain indexPath.
+    //        switch expenseState {
+    //        case .edit:
+    //            guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else { return }
+    //            fakeData.remove(at: indexPathForSelectedRow.row)
+    //            fakeData.insert(expense, at: indexPathForSelectedRow.row)
+    //        case .add:
+    //            fakeData.append(expense)
+    //        }
+    //        tableView.reloadData()
+    //    }
 }
 
 extension ExpectedExpensesViewController: NSFetchedResultsControllerDelegate {
