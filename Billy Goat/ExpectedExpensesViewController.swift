@@ -36,6 +36,11 @@ class ExpectedExpensesViewController: UITableViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
     
     // number of rows will eventually be indexPath.rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -135,23 +140,9 @@ class ExpectedExpensesViewController: UITableViewController {
     }
 }
 
-extension ExpectedExpensesViewController: EditExpenseTableViewControllerDelegate {
-    //    func didPressDone(with expense: Expense, expenseState: EditExpenseTableViewController.ExpenseState) {
-    //        // 5. depending on the state either append or insert at certain indexPath.
-    //        switch expenseState {
-    //        case .edit:
-    //            guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else { return }
-    //            fakeData.remove(at: indexPathForSelectedRow.row)
-    //            fakeData.insert(expense, at: indexPathForSelectedRow.row)
-    //        case .add:
-    //            fakeData.append(expense)
-    //        }
-    //        tableView.reloadData()
-    //    }
-}
 
 extension ExpectedExpensesViewController: NSFetchedResultsControllerDelegate {
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.reloadData()
     }
 }

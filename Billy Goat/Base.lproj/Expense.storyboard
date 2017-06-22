@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cdE-ze-XU2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cdE-ze-XU2">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -168,37 +167,57 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PyV-Xf-7SU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PyV-Xf-7SU" customClass="ExpenseDateCell" customModule="Billy_Goat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PyV-Xf-7SU" id="xpr-2o-hJZ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KtT-51-soP">
-                                                    <rect key="frame" x="8" y="11" width="72" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j2t-Ms-EMw">
-                                                    <rect key="frame" x="206" y="7" width="200" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SN7-DT-VPk">
+                                                    <rect key="frame" x="8" y="8" width="398" height="31.666666666666664"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dtr-2S-YsC">
+                                                            <rect key="frame" x="2" y="0.0" width="394" height="20.333333333333332"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KtT-51-soP">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="197" height="20.333333333333332"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb4-vS-Uy4">
+                                                                    <rect key="frame" x="197" y="0.0" width="197" height="20.333333333333332"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="n8z-SH-Z8E">
+                                                            <rect key="frame" x="39" y="20.333333333333336" width="320" height="11.333333333333332"/>
+                                                            <date key="date" timeIntervalSinceReferenceDate="519801059.39752799">
+                                                                <!--2017-06-22 05:10:59 +0000-->
+                                                            </date>
+                                                        </datePicker>
+                                                    </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="200" id="AcG-LH-ybT"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Dtr-2S-YsC" secondAttribute="trailing" constant="2" id="AUq-u4-blh"/>
+                                                        <constraint firstItem="Dtr-2S-YsC" firstAttribute="leading" secondItem="SN7-DT-VPk" secondAttribute="leading" constant="2" id="V2e-G5-GTt"/>
                                                     </constraints>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                </textField>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="j2t-Ms-EMw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KtT-51-soP" secondAttribute="trailing" constant="8" id="HwO-oy-yzi"/>
-                                                <constraint firstItem="KtT-51-soP" firstAttribute="leading" secondItem="xpr-2o-hJZ" secondAttribute="leadingMargin" id="O7C-UI-3Y2"/>
-                                                <constraint firstAttribute="trailing" secondItem="j2t-Ms-EMw" secondAttribute="trailing" constant="8" id="QBn-oF-ueI"/>
-                                                <constraint firstItem="KtT-51-soP" firstAttribute="centerY" secondItem="xpr-2o-hJZ" secondAttribute="centerY" id="cJo-JH-gZi"/>
-                                                <constraint firstItem="j2t-Ms-EMw" firstAttribute="centerY" secondItem="xpr-2o-hJZ" secondAttribute="centerY" id="toh-sc-J9R"/>
+                                                <constraint firstItem="SN7-DT-VPk" firstAttribute="leading" secondItem="xpr-2o-hJZ" secondAttribute="leading" constant="8" id="8bi-s2-wBL"/>
+                                                <constraint firstAttribute="bottom" secondItem="SN7-DT-VPk" secondAttribute="bottom" constant="4" id="onU-aq-zN2"/>
+                                                <constraint firstAttribute="trailing" secondItem="SN7-DT-VPk" secondAttribute="trailing" constant="8" id="rFA-Rm-OHN"/>
+                                                <constraint firstItem="SN7-DT-VPk" firstAttribute="top" secondItem="xpr-2o-hJZ" secondAttribute="top" constant="8" id="ySV-EZ-vgn"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="xb4-vS-Uy4" id="p7j-0Z-rdJ"/>
+                                            <outlet property="datePicker" destination="n8z-SH-Z8E" id="w8f-BX-vLH"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ckR-eR-wFv">
                                         <rect key="frame" x="0.0" y="132" width="414" height="44"/>
@@ -255,13 +274,12 @@
                     <connections>
                         <outlet property="amountTextField" destination="Ms3-Oy-43E" id="jXc-w2-khK"/>
                         <outlet property="companyTextField" destination="h4D-ww-GFX" id="JPu-EE-XPS"/>
-                        <outlet property="duedateTextField" destination="j2t-Ms-EMw" id="0Gb-M1-9My"/>
                         <outlet property="expenseTextField" destination="Qgm-6M-RTC" id="O06-XD-K3n"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSE-0q-QPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3610" y="139"/>
+            <point key="canvasLocation" x="3608.6956521739135" y="138.58695652173915"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="25A-s1-Q8M">
@@ -283,6 +301,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0Ia-9V-SLn"/>
+        <segue reference="vXj-65-pTu"/>
     </inferredMetricsTieBreakers>
 </document>

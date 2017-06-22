@@ -21,6 +21,7 @@
 		7C4BE06B1E8A191D009A387F /* IncomeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4BE06A1E8A191D009A387F /* IncomeListTableViewController.swift */; };
 		7C4BE06D1E8A1DE4009A387F /* IncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4BE06C1E8A1DE4009A387F /* IncomeCell.swift */; };
 		7CA253681E960D52000CB31C /* EditIncomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA253671E960D52000CB31C /* EditIncomeTableViewController.swift */; };
+		7CCD5E731EFB8A0A0012B7B2 /* ExpenseDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCD5E721EFB8A0A0012B7B2 /* ExpenseDateCell.swift */; };
 		7CD46B7C1E9DE54E00B7788A /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD46B781E9DE54E00B7788A /* Expense+CoreDataClass.swift */; };
 		7CD46B7D1E9DE54E00B7788A /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD46B791E9DE54E00B7788A /* Expense+CoreDataProperties.swift */; };
 		7CD46B7E1E9DE54E00B7788A /* Income+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD46B7A1E9DE54E00B7788A /* Income+CoreDataClass.swift */; };
@@ -44,6 +45,7 @@
 		7C4BE06A1E8A191D009A387F /* IncomeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeListTableViewController.swift; sourceTree = "<group>"; };
 		7C4BE06C1E8A1DE4009A387F /* IncomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeCell.swift; sourceTree = "<group>"; };
 		7CA253671E960D52000CB31C /* EditIncomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditIncomeTableViewController.swift; sourceTree = "<group>"; };
+		7CCD5E721EFB8A0A0012B7B2 /* ExpenseDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseDateCell.swift; sourceTree = "<group>"; };
 		7CD46B781E9DE54E00B7788A /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7CD46B791E9DE54E00B7788A /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7CD46B7A1E9DE54E00B7788A /* Income+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Income+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				7C2304771E835813006E1F15 /* ExpectedExpensesViewController.swift */,
 				7C2304791E836BB6006E1F15 /* ExpenseCell.swift */,
 				7C2304831E837EDB006E1F15 /* EditExpenseTableViewController.swift */,
+				7CCD5E721EFB8A0A0012B7B2 /* ExpenseDateCell.swift */,
 			);
 			name = "Expense Screen";
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				7C2304841E837EDB006E1F15 /* EditExpenseTableViewController.swift in Sources */,
 				7CD46B7F1E9DE54E00B7788A /* Income+CoreDataProperties.swift in Sources */,
 				7CD46B7C1E9DE54E00B7788A /* Expense+CoreDataClass.swift in Sources */,
+				7CCD5E731EFB8A0A0012B7B2 /* ExpenseDateCell.swift in Sources */,
 				7C2304651E7E2A3B006E1F15 /* Billy_Goat.xcdatamodeld in Sources */,
 				7CD46B7E1E9DE54E00B7788A /* Income+CoreDataClass.swift in Sources */,
 				7C4BE06D1E8A1DE4009A387F /* IncomeCell.swift in Sources */,

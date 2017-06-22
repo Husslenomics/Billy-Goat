@@ -22,13 +22,13 @@ final class EditExpenseTableViewController: UITableViewController {
 //            .persistentContainer.viewContext
 //    }
     
-    // 2. add property observer to set the state that was created in step 1
     private var expenseState: ExpenseState = .add
     var expense: Expense?
+    fileprivate var date: Date?
 
     weak var editExpenseDelegate: EditExpenseTableViewControllerDelegate?
     
-    // 1. Create a state tracking with either bool or enum
+
     enum ExpenseState {
         case edit
         case add
@@ -50,9 +50,10 @@ final class EditExpenseTableViewController: UITableViewController {
 //        // set each textfield's text property with expense data
         expenseTextField.text = expense.name
         companyTextField.text = expense.companyName
-        duedateTextField.text = "\(expense.dueDate)"
+//        duedateTextField.text = expense.dueDate
         amountTextField.text = "\(expense.amount)"
         
+    
     }
 
     
@@ -64,26 +65,35 @@ final class EditExpenseTableViewController: UITableViewController {
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         // FIXME: form validation
-        // remove !
-//        expense = Expense(name: expenseTextField.text ?? "", company: companyTextField.text ?? "", money: Double(amountTextField.text!) ?? 0, dueDate: duedateTextField.text ?? "")
-//        
-//        // 4. You could possible have 2 different delegate or you could pass the state into this delegate method (parameter) and act accordingly in the other view controller. 
-//        guard let expense = expense else { return }
-//
-//        editExpenseDelegate?.didPressDone(with: expense, expenseState: expenseState)
-//        
-        //guard let context = context else { fatalError("Shit needs to be here.") }
-        
+
+        // 4. safely unwrap the date variable. If it doesn't exist simply return. 
+        // 5. set the date to dueDate.
         Expense.expense(with: Double(amountTextField.text!) ?? 0, companyName: companyTextField.text ?? "", dueDate: Date(), name: expenseTextField.text ?? "", isReoccuring: false, in: AppDelegate.persistentContainer.viewContext)
         try! AppDelegate.persistentContainer.viewContext.save()
         
         dismiss(animated: true, completion: nil)
 
     }
-    
-    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-   
 }
 
+// MARK: UITableViewDelegate/Datasource
+extension EditExpenseTableViewController {
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let dateCell = tableView.cellForRow(at: indexPath) as? ExpenseDateCell else { return }
+        
+        tableView.beginUpdates()
+        dateCell.datePicker.isHidden = !dateCell.datePicker.isHidden
+        tableView.endUpdates()
+    }
+}
+
+// 3. Extension that conforms to ExpenseDateCellDelegate. In here assign the date to date variable.
