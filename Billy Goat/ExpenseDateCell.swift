@@ -15,8 +15,19 @@ protocol ExpenseDateCellDelegate: class {
 final class ExpenseDateCell: UITableViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var datePicker: UIDatePicker!
+    
+    var date: Date? {
+        didSet {
+            guard let date = date else { return }
+            dateLabel.text = dateFormatter.string(from: date)
+            dateLabel.isHidden = false
+        }
+    }
 
     // 1. create weak var delegate that is of type what ever you name the protocol
+    
+    weak var dateCellDelegate: ExpenseDateCellDelegate?
+    
     lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -38,8 +49,7 @@ final class ExpenseDateCell: UITableViewCell {
         dateLabel.isHidden = false
         dateLabel.text = dateString
         
-        
-        // 2. call the protocol method which will send
+        dateCellDelegate?.expenseDateCell(didSetDate: sender.date)
     }
 }
 

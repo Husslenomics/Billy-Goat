@@ -23,6 +23,7 @@ public class Expense: NSManagedObject {
     ///   - isReoccuring: if the expense is re occuring
     ///   - context: context to be used to insert the expense
     /// - Returns: Fully configured Expense or nil
+    @discardableResult
     class func expense(with amount: Double?, companyName: String?, dueDate: Date?, name: String?, isReoccuring: Bool?, in context: NSManagedObjectContext) -> Expense? {
     
         guard let amount = amount, let isReoccuring = isReoccuring else { return nil }

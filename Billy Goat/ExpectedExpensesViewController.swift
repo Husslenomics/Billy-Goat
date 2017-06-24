@@ -108,11 +108,11 @@ class ExpectedExpensesViewController: UITableViewController {
             
             //  send the data to editExpenseTableVC
             editExpenseTableVC.expense = expense
-            editExpenseTableVC.editExpenseDelegate = self
+            //editExpenseTableVC.editExpenseDelegate = self
             editExpenseTableVC.title = "Edit Expense"
             
         case "showAdd":
-            editExpenseTableVC.editExpenseDelegate = self
+            //editExpenseTableVC.editExpenseDelegate = self
             editExpenseTableVC.title = "Add Expense"
             
         default: break
@@ -124,7 +124,7 @@ class ExpectedExpensesViewController: UITableViewController {
         var totalExpense: Double = 0.0
         guard let fetchedObjects = fetchedResultsController.fetchedObjects else { return }
         
-        //       var totalExpense = fetchedObjects.reduce(0, {$0 + $1.amount})
+        // var totalExpense = fetchedObjects.reduce(0, {$0 + $1.amount})
         
         for expense in fetchedObjects {
             totalExpense += expense.amount
@@ -140,6 +140,20 @@ class ExpectedExpensesViewController: UITableViewController {
     }
 }
 
+//extension ExpectedExpensesViewController: EditExpenseTableViewControllerDelegate {
+    //    func didPressDone(with expense: Expense, expenseState: EditExpenseTableViewController.ExpenseState) {
+    //        // 5. depending on the state either append or insert at certain indexPath.
+    //        switch expenseState {
+    //        case .edit:
+    //            guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else { return }
+    //            fakeData.remove(at: indexPathForSelectedRow.row)
+    //            fakeData.insert(expense, at: indexPathForSelectedRow.row)
+    //        case .add:
+    //            fakeData.append(expense)
+    //        }
+    //        tableView.reloadData()
+    //    }
+//}
 
 extension ExpectedExpensesViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

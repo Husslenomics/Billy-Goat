@@ -15,13 +15,19 @@ class ExpenseCell: UITableViewCell {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var dueDate: UILabel!
 
+    lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        return dateFormatter
+    }()
     
     func configure(with expense: Expense) {
         expenseName.text = expense.name
         companyName.text = expense.companyName
         amountLabel.text = "\(expense.amount)"
+        guard let dueDate = expense.dueDate as Date? else { return }
+        self.dueDate.text = dateFormatter.string(from: dueDate)
         
-        //TODO: use DateFormatter to display date
     }
-    
 }

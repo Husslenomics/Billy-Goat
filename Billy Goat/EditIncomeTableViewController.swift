@@ -19,6 +19,8 @@ final class EditIncomeTableViewController: UITableViewController {
     
     weak var editIncomeDelegate: EditIncomeTableViewControllerDelegate?
     
+    var datePickerVisible = false
+    
     enum IncomeState {
         case edit
         case add
@@ -28,6 +30,42 @@ final class EditIncomeTableViewController: UITableViewController {
     @IBOutlet weak var incomeSourceTextField: UITextField!
     @IBOutlet weak var payDayTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var datePickerCell: UITableViewCell!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    
+    func showDatePicker() {
+        datePickerVisible = true
+        let indexPathDatePicker = IndexPath(row: 3, section: 0)
+        tableView.insertRows(at: [indexPathDatePicker], with: .fade)
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 && indexPath.row == 3 {
+            return datePickerCell
+        } else {
+            return super.tableView(tableView, cellForRowAt: indexPath)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                           numberOfRowsInSection section: Int) -> Int {
+        if section == 0 && datePickerVisible {
+            return 4
+        } else {
+            return super.tableView(tableView, numberOfRowsInSection: section)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        //textField.resignFirstResponder()
+        if indexPath.section == 0 && indexPath.row == 2 {
+            showDatePicker()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

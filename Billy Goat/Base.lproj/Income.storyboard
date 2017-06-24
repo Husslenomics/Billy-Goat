@@ -248,12 +248,36 @@
                     </navigationItem>
                     <connections>
                         <outlet property="amountTextField" destination="fdZ-tq-l6a" id="KW4-cI-nkn"/>
+                        <outlet property="datePicker" destination="PDp-lm-IYD" id="kJb-nQ-Dw3"/>
+                        <outlet property="datePickerCell" destination="5KH-DP-td2" id="rPT-9V-Hjj"/>
                         <outlet property="incomeNameTextField" destination="Nc8-2Z-M2b" id="WYe-gx-ala"/>
                         <outlet property="incomeSourceTextField" destination="Goj-f6-KsW" id="3Jo-Gt-1Br"/>
                         <outlet property="payDayTextField" destination="FZe-TK-7ee" id="F2C-gf-zMd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjf-WO-Zij" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="5KH-DP-td2" userLabel="Date Picker Cell">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5KH-DP-td2" id="gWC-aL-tVW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="PDp-lm-IYD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="519969723.44392502">
+                                    <!--2017-06-24 04:02:03 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="PDp-lm-IYD" firstAttribute="leading" secondItem="gWC-aL-tVW" secondAttribute="leading" id="Ayt-Vb-gFR"/>
+                            <constraint firstAttribute="trailing" secondItem="PDp-lm-IYD" secondAttribute="trailing" id="FoN-jq-E0M"/>
+                            <constraint firstAttribute="bottom" secondItem="PDp-lm-IYD" secondAttribute="bottom" id="qfq-Zd-nwi"/>
+                            <constraint firstItem="PDp-lm-IYD" firstAttribute="top" secondItem="gWC-aL-tVW" secondAttribute="top" id="u9x-AQ-dRI"/>
+                        </constraints>
+                    </tableViewCellContentView>
+                </tableViewCell>
             </objects>
             <point key="canvasLocation" x="3593" y="813"/>
         </scene>
@@ -262,7 +286,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IpE-aa-TFT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6un-g4-JIj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6un-g4-JIj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
